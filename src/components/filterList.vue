@@ -22,14 +22,13 @@ export default defineComponent({
             required: true,
         }
     },
-
   data() {
     return {
         filters: ['Все', 'Активные', 'Завершенные']
     }
   },
   methods: {
-    setFilter(filter) {
+    setFilter(filter: String) {
         this.$emit('setFilter', filter)
     }
   },
@@ -38,14 +37,11 @@ export default defineComponent({
 
 <style lang="scss">
 .filters {
-
     width: 100%;
     margin-top: 15px;
-
     &__group {
         display: flex;
         justify-content: space-around;
-
         &__btn {
             border-radius: 25px;
             font-size: 40px;

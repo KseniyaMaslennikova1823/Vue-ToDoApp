@@ -1,16 +1,15 @@
 <template>
-<div class="app">
-  <Header />
-  <Filterlist  :activeFilter="activeFilter" @setFilter="setFilter"/>
-  <NewTask @addTask="addTask" />
-  <ListTasks 
-    :tasks="filteredTasks"
-    @toggleTask="toggleTask" 
-    @deleteTask="deleteTask" 
-    @updateTask="updateTask"
-  />
-</div>
-
+  <div class="app">
+    <Header />
+    <Filterlist  :activeFilter="activeFilter" @setFilter="setFilter"/>
+    <NewTask @addTask="addTask" />
+    <ListTasks 
+      :tasks="filteredTasks"
+      @toggleTask="toggleTask" 
+      @deleteTask="deleteTask" 
+      @updateTask="updateTask"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -19,11 +18,7 @@ import Header from "./components/Header.vue";
 import Filterlist from "./components/filterList.vue";
 import NewTask from "./components/newTask.vue";
 import ListTasks from "./components/listTasks.vue";
-import { Task } from "./Task.ts";
-
-interface State {
-    activeFilter: 'Все' | 'Активные' | 'Завершенные',
-}
+import { Task } from "./components/Task.ts";
 
 export default defineComponent({
 components: {
@@ -39,11 +34,11 @@ components: {
           {id: 1, title: 'Задача 2', text: 'Описание 2', status: false},
           {id: 2, title: 'Задача 3', text: 'Описание 3', status: false},
       ],
-      activeFilter: 'Все'
+      activeFilter: 'Все',
     }
   },
   computed: {
-    filteredTasks(): Task[] {
+    filteredTasks(activeFilter: String) {
       switch (this.activeFilter) {
         case 'Активные':
           return this.tasks.filter(task => !task.status)
@@ -56,27 +51,25 @@ components: {
     }
   },
   methods: {
-    toggleTask(id) {
-        const taskStatus = this.tasks.find(task => task.id ===id)
+    toggleTask(id: Number) {
+        const taskStatus = this.tasks.find(task => task.id === id)
         if(taskStatus) {
             taskStatus.status = !taskStatus.status
         }
     },
-    deleteTask(id) {
+    deleteTask(id: Number) {
         this.tasks = this.tasks.filter(task => task.id !== id)
     },
-    addTask(task) {
+    addTask(task: Object) {
       this.tasks.push(task)
     },
-    setFilter(filter) {
+    setFilter(filter: String) {
       this.activeFilter = filter
     },
-    updateTask(id, taskTitle, taskText) {
+    updateTask(id: Number, taskTitle: String, taskText: String) {
       const updateTasks = this.tasks.find(task => task.id === id)
       updateTasks.title = taskTitle
       updateTasks.text = taskText
-
-
     }
   },
 })

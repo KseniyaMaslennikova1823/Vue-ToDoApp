@@ -18,10 +18,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-
   data() {
-
-
     return {
         visibleForm: false,
         taskTitle: '',
@@ -42,7 +39,6 @@ export default defineComponent({
             text: this.taskText,
             status: false
         })
-
         this.taskTitle = '',
         this.taskText = ''
     }
@@ -58,15 +54,12 @@ export default defineComponent({
     align-items: center;
     &__showForm {
         font-size: 35px;
-        
-
     }
     &__form {
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-
         &__closeForm {
             font-size: 45px;
         }

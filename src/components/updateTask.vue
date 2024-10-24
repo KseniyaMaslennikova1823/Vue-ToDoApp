@@ -15,8 +15,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-
-      data() {
+    data() {
         return {
             visibleForm: false
         }
@@ -28,8 +27,7 @@ export default defineComponent({
         closeForm() {
             this.visibleForm = false
         },
-        updateTask() {
-            console.log('hello')
+        updateTask(id: Number, taskTitle: String, taskText: String) {
         }
     },
 })
@@ -51,29 +49,26 @@ export default defineComponent({
     width: 540px;
     border-radius: 25px;
     padding: 10px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     &__input {
         width: 90%;
-            font-size: 45px;
-            border-radius: 25px;
-            padding: 10px;
-            border: 1px solid #36D986;
-            outline: none;
+        font-size: 45px;
+        border-radius: 25px;
+        padding: 10px;
+        border: 1px solid #36D986;
+        outline: none;
     }
     &__textarea {
         width: 90%;
-            font-size: 35px;
-            border-radius: 25px;
-            padding: 10px;
-            border: 1px solid #36D986;
-            margin-top: 10px;
-            outline: none;
+        font-size: 35px;
+        border-radius: 25px;
+        padding: 10px;
+        border: 1px solid #36D986;
+        margin-top: 10px;
+        outline: none;
     }
-
     &__control {
         width: 100%;
         display: flex;
@@ -84,8 +79,5 @@ export default defineComponent({
             margin-bottom: 15px;
         }
     }
-
-
-
 }
 </style>

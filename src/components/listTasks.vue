@@ -16,7 +16,6 @@ import { PropType, defineComponent } from 'vue'
 import Tasks from "./task.vue";
 import { Task } from './Task.ts';
 
-
 export default defineComponent({
     components: {
         Tasks
@@ -24,15 +23,14 @@ export default defineComponent({
     props: {
         tasks: Array as PropType<Task[]> 
     },
-
   methods: {
-    toggleTask(id) {
+    toggleTask(id: Number) {
         this.$emit('toggleTask', id)
     },
-    deleteTask(id) {
+    deleteTask(id: Number) {
         this.$emit('deleteTask', id)
     },
-    updateTask(id, taskTitle, taskText) {
+    updateTask(id: Number, taskTitle: String, taskText: String) {
         this.$emit('updateTask', id, taskTitle, taskText)
     }
   }
@@ -44,6 +42,5 @@ export default defineComponent({
     list-style: none;
     width: 90%;
     margin-top: 10px;
-  
 }
 </style>
